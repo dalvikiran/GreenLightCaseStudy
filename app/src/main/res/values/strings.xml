@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">GreenLightCaseStudyApp</string>
+
+    <string name="id">Id : %s</string>
+    <string name="name"><b>Name : </b> %s</string>
+    <string name="username">Username : %s</string>
+    <string name="email_id">Email-id : %s</string>
+    <string name="phone_no">Phone no : %s</string>
+    <string name="website">Website : %s</string>
+    <string name="address">Address :</string>
+    <string name="comma">,&#160;</string>
+    <string name="zip_code">Zip code :</string>
+    <string name="company">Company :</string>
+    <string name="company_value">%s,\n%s,\n%s</string>
+    <string name="delete">Delete</string>
+
+</resources>

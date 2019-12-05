@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="userViewModel"
+            type="com.example.greenlightcasestudyapp.view_models.UserListItemViewModel"
+         />
+
+    </data>
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/dp_10"
+        android:layout_margin="10dp">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_id"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_width="wrap_content"
+                android:text= "@{@string/id(userViewModel.user.id)}"
+                android:visibility="gone"
+                android:textColor="@color/colorGrayDark"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_name"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@id/tv_id"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_width="wrap_content"
+                android:textColor="@color/colorGrayDark"
+                android:text= "@{@string/name(userViewModel.user.name)}"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_username"
+                app:layout_constraintTop_toBottomOf="@id/tv_name"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_width="wrap_content"
+                android:textColor="@color/colorGrayDark"
+                android:text= "@{@string/username(userViewModel.user.username)}"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_email_id"
+                android:autoLink="email"
+                app:layout_constraintTop_toBottomOf="@id/tv_username"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_width="wrap_content"
+                android:textColor="@color/colorGrayDark"
+                android:text= "@{@string/email_id(userViewModel.user.email)}"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_address"
+                app:layout_constraintTop_toBottomOf="@id/tv_email_id"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_width="wrap_content"
+                android:textColor="@color/colorGrayDark"
+                android:text= "@string/address"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_address_value"
+                app:layout_constraintTop_toBottomOf="@id/tv_email_id"
+                app:layout_constraintLeft_toRightOf="@id/tv_address"
+                android:maxLines="5"
+                android:layout_width="wrap_content"
+                android:textColor="@color/colorGrayDark"
+                android:text="@{userViewModel.user.address.street.concat(@string/comma).concat(userViewModel.user.address.city).concat(@string/comma).concat(@string/zip_code).concat(userViewModel.user.address.zipcode)}"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_phone_no"
+                app:layout_constraintTop_toBottomOf="@id/tv_address_value"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:textColor="@color/colorGrayDark"
+                android:layout_width="wrap_content"
+                android:autoLink="phone"
+                android:text= "@{@string/phone_no(userViewModel.user.phone)}"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_website"
+                android:autoLink="web"
+                app:layout_constraintTop_toBottomOf="@id/tv_phone_no"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:textColor="@color/colorGrayDark"
+                android:layout_width="wrap_content"
+                android:text= "@{@string/website(userViewModel.user.website)}"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_company"
+                app:layout_constraintTop_toBottomOf="@id/tv_website"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:textColor="@color/colorGrayDark"
+                android:layout_width="wrap_content"
+                android:text= "@string/company"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_company_value"
+                app:layout_constraintTop_toBottomOf="@id/tv_website"
+                app:layout_constraintLeft_toRightOf="@id/tv_company"
+                android:textColor="@color/colorGrayDark"
+                android:layout_width="wrap_content"
+                android:text=
+                    "@{@string/company_value(userViewModel.user.company.name,userViewModel.user.company.catchPhrase,userViewModel.user.company.bs)}"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/iv_delete"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_width="wrap_content"
+                android:visibility="@{userViewModel.deleteVisibility? View.VISIBLE : View.GONE}"
+                android:src="@drawable/ic_delete"
+                android:onClick="@{()-> userViewModel.onDeleteClick()}"
+                android:layout_height="wrap_content" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
